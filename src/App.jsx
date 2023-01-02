@@ -8,7 +8,7 @@ function App() {
     <>
       <Routes>
         <Route path='/' element={<Autodiagnostico />} />
-        <Route path='/autodiagnostico' element={<AutodiagLayout />} />
+        <Route path='/layout' element={<AutodiagLayout />} />
       </Routes>
     </>
   )
