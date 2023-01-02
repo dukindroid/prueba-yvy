@@ -1,27 +1,61 @@
-import { useState, useEffect, useRef } from 'react'
 import Button from '@mui/material/Button';
+import MyTheme from './MyTheme';
+import { ThemeProvider } from '@mui/material/styles';
+
 
 const MySpecialButton = (props) => {
   // const [buttonValue, setbuttonValue] = useState(false);
   // props.value = useRef(false);
   const handleClick = (event) => {
-    props.onChange(event.target.value)
+    props.onClick(event)
+    // props.onChange(event.target.value)
   }
   const ButtonGray = (props)=> {
-    return (<Button value={props.value} id={null} onClick={handleClick} sx={{backgroundColor:'#E7EAEE', color:'#ccc'}} size='small'>{props.text}</Button>)
+    return (
+    <ThemeWrapper>
+
+    <Button value={props.value} id={null} onClick={handleClick} sx={{backgroundColor:'#E7EAEE', color:'#ccc'}} size='small'>
+      {props.text}
+    </Button>
+    </ThemeWrapper>
+    )
   }
   const ButtonNO = () => {
-    return (<Button value={props.value} id={false} onClick={handleClick} sx={{backgroundColor:'#047857', color:'#fff'}} size='small'>SI</Button>)
+    return (
+      <ThemeWrapper>
+
+      <Button value={props.value} id={false} onClick={handleClick} sx={{backgroundColor:'#047857', color:'#fff'}} size='small'>
+        SI
+      </Button>
+      </ThemeWrapper>
+      )
     
   }
   const ButtonYES = () => {
-    return (<Button value={props.value} id={true} onClick={handleClick} sx={{backgroundColor:'#A51816', color:'#fff'}} size='small'>NO</Button>)
+    return (
+      <ThemeWrapper>
+        <Button value={props.value} id={true} onClick={handleClick} sx={{backgroundColor:'#A51816', color:'#fff'}} size='small'>
+          NO
+        </Button>
+      </ThemeWrapper>
+        )
   }
-  if (props.value) {
-    if (props.type === 'YES') return (<ButtonYES />) 
-    if (props.type === 'NO') return (<ButtonNO />) 
+
+  const ThemeWrapper = ({children}) => {
+    return (
+      <ThemeProvider theme={MyTheme}>
+        {children}
+      </ThemeProvider>
+    )
+  } 
+
+  if (props.value !== null) {
+    if (props.type === 'true') return (<ButtonYES />) 
+    if (props.type === 'false') return (<ButtonNO />) 
   }
   return (<ButtonGray text={props.text} />)
 }
+    
+
 
 export default MySpecialButton

@@ -1,4 +1,4 @@
-import AutodiagLayout from "./pages/AutodiagLayout";
+import Layout from "./pages/Layout";
 import { Autodiagnostico } from "./pages/Autodiagnostico"
 import { Routes, Route } from "react-router-dom";
 
@@ -8,7 +8,7 @@ function App() {
     <>
       <Routes>
         <Route path='/' element={<Autodiagnostico />} />
-        <Route path='/layout' element={<AutodiagLayout />} />
+        <Route path='/layout' element={<Layout />} />
       </Routes>
     </>
   )

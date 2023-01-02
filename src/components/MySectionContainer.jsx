@@ -24,7 +24,7 @@ export default function MySectionContainer(props) {
       <Container component="main" maxWidth="lg">
         <Box
           sx={{
-            marginTop: 0,
+            marginBottom: 5,
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
